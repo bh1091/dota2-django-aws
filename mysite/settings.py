@@ -65,6 +65,14 @@ DATABASES = {
             'HOST': os.environ['RDS_HOSTNAME'],
             'PORT': os.environ['RDS_PORT'],
         }
+    # 'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'NAME': '',
+    #         'USER': '',
+    #         'PASSWORD': '',
+    #         'HOST': '',
+    #         'PORT': '',
+    #     }
 }
 
 # Internationalization
@@ -86,3 +94,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'static')
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
+)
