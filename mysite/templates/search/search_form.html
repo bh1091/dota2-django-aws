@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search/" method="get">
+        <input type="text" name="steam_id">
+        <input type="submit" value="Search">
+    </form>
+    {% if steam_id %}
+    <p>player {{ player_name }}<p>
+    <img src="{{ player_avatar }}">
+    {% else %}
+    <p>please enter player name<p>
+    {% endif %}
+</body>
+</html>

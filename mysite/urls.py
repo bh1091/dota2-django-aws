@@ -9,4 +9,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^banpick/$', 'mysite.views.ban_pick'),
+    url(r'^search/$', 'search.views.search'),
 )
