@@ -8,10 +8,16 @@
         <input type="submit" value="Search">
     </form>
     {% if steam_id %}
-    <p>player {{ player_name }}<p>
+    <p>player {{ player_name }}</p>
     <img src="{{ player_avatar }}">
+    <p>recent {{ match_number }} match ids</p>
+    <ul>
+    {% for match in match_list_10 %}
+    	<li>{{ match.match_id }}</li>
+    {% endfor %}
+	</ul>
     {% else %}
-    <p>please enter player name<p>
+    <p>please enter your steam ID </p>
     {% endif %}
 </body>
 </html>

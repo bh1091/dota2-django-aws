@@ -1,6 +1,12 @@
 import requests
 import json
 
+class match_info(object):
+	def __init__(self, match_id):
+		self.match_id = match_id
+		self.players = []
+		self.heros = []
+
 class player_searcher:
 	def __init__(self):
 		pass
@@ -24,3 +30,18 @@ class player_searcher:
 			return player
 		except Exception, e:
 			print 'error when getting player : ' + str(e)
+
+	def get_match_by_steamid(self, steamid):
+		url = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=D8023851199312FC130D5F896A60BD84&account_id=' + str(steamid)
+		try:
+			resp = requests.get(url)
+			content = json.loads(resp.content)
+			match_list = content['result']['matches']
+			match_list = match_list[:10]
+			match_list_10 = []
+			for match in match_list:
+				match_tmp = match_info(match['match_id'])
+				match_list_10.append(match_tmp)
+			return match_list_10
+		except Exception, e:
+			print 'error when getting matches : ' + str(e)

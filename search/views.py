@@ -10,5 +10,7 @@ def search(request):
 		player = user_searcher.get_player_by_steamid(steam_id)
 		player_name = player['personaname']
 		player_avatar = player['avatarmedium']
+		match_list_10 = user_searcher.get_match_by_steamid(steam_id)
+		match_number = len(match_list_10)
 
 	return render_to_response('search/search_form.html', locals())
