@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^banpick/$', 'mysite.views.ban_pick'),
+    url(r'^admin/', include(admin.site.urls)),    
     url(r'^search/$', 'search.views.search'),
+    url(r'^banpick/$', 'banpick.views.banpick')
 )
