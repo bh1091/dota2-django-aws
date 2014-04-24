@@ -1,0 +1,67 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
+</head>
+<p>this is the ban pick page</p>
+<form action="/banpick/" method="get">
+	<input type="hidden" name="phase" value="{{ banpick_phase }}" readonly>
+	<input type="hidden" name="radiant_ban" value="{{ radiant_ban }}" readonly>
+	<input type="hidden" name="radiant_pick" value="{{ radiant_pick }}" readonly>
+	<input type="hidden" name="dire_ban" value="{{ dire_ban }}" readonly>
+	<input type="hidden" name="dire_pick" value="{{ dire_pick }}" readonly>
+	<input type="hidden" name="side" value="{{ banpick_side }}" readonly>
+	{% if banpick_phase == 0 %}
+	<p> please choose who b/p first</p>	
+	<input type="radio" name="choose_side" value="radiant">Radiant<br>
+	<input type="radio" name="choose_side" value="dire">Dire<br>
+	{% elif banpick_phase == 21 %}
+	<p>ban/pick finished</p>
+	<p>Radiant Ban</p>
+	<p>{{ radiant_ban }}</p>
+	<p>Dire Ban</p>
+	<p>{{ dire_ban }}</p>
+	<p>Radiant Pick</p>
+	<p>{{ radiant_pick }}</p>
+	<p>Dire Pick</p>
+	<p>{{ dire_pick }}</p>
+	<p>Radiant Winrate = {{ radiant_winrate|stringformat:".3f" }}</p>
+	<p>Dire Winrate = {{ dire_winrate|stringformat:".3f" }}</p>
+	{% else %}
+	<p>
+		{% if banpick_side == "radiant" %}
+		Radiant
+		{% elif banpick_side == "dire" %}
+		Dire
+		{% endif %}
+		{% if ban_or_pick == "ban" %}
+		  ban
+		{% elif ban_or_pick == "pick" %}
+		  pick
+		{% endif %}
+	</p>
+	
+	<p>Please enter the hero id</p>
+	<input type="number" name="hero_id">
+	{% endif %}
+	<input type="submit" value="Submit">
+</form>
+{% if banpick_phase >= 1 %}
+	<p>Radiant Ban</p>
+	{% for url in radiant_ban_image %}
+		<li><img src="{{ url }}"></li>
+	{% endfor %}
+	<p>Dire Ban</p>
+	{% for url in dire_ban_image %}
+		<li><img src="{{ url }}"></li>
+	{% endfor %}
+	<p>Radiant Pick</p>
+	{% for url in radiant_pick_image %}
+		<li><img src="{{ url }}"></li>
+	{% endfor %}
+	<p>Dire Pick</p>
+	{% for url in dire_pick_image %}
+		<li><img src="{{ url }}"></li>
+	{% endfor %}
+{% endif %}
+</html>

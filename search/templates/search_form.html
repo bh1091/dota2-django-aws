@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search/" method="get">
+        <input type="text" name="steam_id">
+        <input type="submit" value="Search">
+    </form>
+    {% if steam_id %}
+    <p>player {{ player_name }}</p>
+    <img src="{{ player_avatar }}">
+    <p>recent {{ match_number }} match ids</p>
+    <ul>
+    {% for match in match_list_10 %}
+    	<li>{{ match.match_id }}</li>
+    {% endfor %}
+	</ul>
+    {% else %}
+    <p>please enter your steam ID </p>
+    {% endif %}
+</body>
+</html>

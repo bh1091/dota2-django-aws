@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'search',
     'banpick',
+    'mysite',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -13,4 +13,4 @@ def search(request):
 		match_list_10 = user_searcher.get_match_by_steamid(steam_id)
 		match_number = len(match_list_10)
 
-	return render_to_response('search/search_form.html', locals())
+	return render_to_response('search_form.html', locals())

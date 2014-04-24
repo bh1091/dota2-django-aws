@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from analysiser import analysis_winrate
+from util import *
 
 # Create your views here.
 def banpick(request):
@@ -17,9 +18,9 @@ def banpick(request):
 	# process form
 	if 'phase' in request.GET:
 		banpick_phase = int(request.GET['phase'])
-		radiant_ban = str(request.GET['radiant_ban'])
-		radiant_pick = str(request.GET['radiant_pick'])
-		dire_ban = str(request.GET['dire_ban'])
+		radiant_ban = str(request.GET['radiant_ban'])		
+		radiant_pick = str(request.GET['radiant_pick'])		
+		dire_ban = str(request.GET['dire_ban'])		
 		dire_pick = str(request.GET['dire_pick'])
 		if banpick_phase == 0:
 			banpick_side = str(request.GET['choose_side'])
@@ -43,6 +44,10 @@ def banpick(request):
 						banpick_side = 'dire'
 					else:
 						banpick_side = 'radiant'
+				radiant_ban_image = generate_image_resource(radiant_ban)
+				radiant_pick_image = generate_image_resource(radiant_pick)
+				dire_ban_image = generate_image_resource(dire_ban)
+				dire_pick_image = generate_image_resource(dire_pick)
 				banpick_phase = int(banpick_phase) + 1
 				if banpick_phase in ban_phase:
 					ban_or_pick = 'ban'
@@ -54,4 +59,4 @@ def banpick(request):
 					dire_winrate = 1.0 - radiant_winrate
 	
 
-	return render_to_response('banpick/banpick.html', locals())
+	return render_to_response('banpick.html', locals())
