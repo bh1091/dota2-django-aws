@@ -70,9 +70,9 @@ DATABASES = {
         }
     # 'default': {
     #         'ENGINE': 'django.db.backends.mysql',
-    #         'NAME': '',
-    #         'USER': '',
-    #         'PASSWORD': '',
+    #         'NAME': 'dota2',
+    #         'USER': 'root',
+    #         'PASSWORD': 'tianlang',
     #         'HOST': '',
     #         'PORT': '',
     #     }

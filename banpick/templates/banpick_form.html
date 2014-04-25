@@ -43,6 +43,11 @@
 			<h3>Dire Winrate = {{ dire_winrate|stringformat:".3f" }}</h3>
 		</div>
 	</div>	
+	<div class="row result-row">
+		<div class="col-md-12">
+			<a href="/banpick/"><button type="button" class="btn btn-default">Try Again</button></a>
+		</div>
+	</div>
 	{% else %}
 	<div class="row turn-row">
 		<div class="col-md-12">
@@ -62,9 +67,22 @@
 	</div>
 	<div class="row">
 		<select name="hero_id"class="image-picker" form="bpform">
-		{% for opt in option_list %}
-			<option data-img-src="/static/img/potrait/{{ opt }}.png" value="{{ opt }}">{{ opt }}</option>
-		{% endfor %}
+			<optgroup label="Strength">
+			    {% for opt in strength_list %}
+			    	<option data-img-src="/static/img/potrait/{{ opt }}.png" value="{{ opt }}">{{ opt }}</option>
+			    {% endfor %}
+			</optgroup>
+			<optgroup label="Agility">
+			    {% for opt in agility_list %}
+			    	<option data-img-src="/static/img/potrait/{{ opt }}.png" value="{{ opt }}">{{ opt }}</option>
+			    {% endfor %}
+			</optgroup>
+			<optgroup label="Intelligence">
+			    {% for opt in intell_list %}
+			    	<option data-img-src="/static/img/potrait/{{ opt }}.png" value="{{ opt }}">{{ opt }}</option>
+			    {% endfor %}
+			</optgroup>
+		
 		</select>
 	</div>
 	<div class="row turn-row">

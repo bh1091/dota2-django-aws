@@ -2,21 +2,95 @@
 {% block title %}Search Page{% endblock %}
 
 {% block content %}
+<div class="row search-input">
     <form action="/search/" method="get">
-        <input type="text" name="steam_id">
-        <input type="submit" value="Search">
+        <div class="col-md-12">        
+            <input type="text" name="steam_id">                    
+        </div>
+    <div class="col-md-12">
+        <p>Enter Steam ID here   <span class="glyphicon glyphicon-search"></span></p>
+    </div>
+    <div class="col-md-12">
+        <input class="btn btn-default" type="submit" value="Search">
+    </div>
     </form>
-    {% if steam_id %}
-    <p>player {{ player_name }}</p>
-    <img src="{{ player_avatar }}">
-    <p>recent {{ match_number }} match ids</p>
-    <ul>
-    {% for match in match_list_10 %}
-        <li>{{ match.match_id }}</li>
-    {% endfor %}
-    </ul>
-    {% else %}
-    <p>please enter your steam ID </p>
-    {% endif %}
+</div>    
+{% if steam_id %}
+<div class="row search-result">
+    <div class="col-md-12">        
+        <h3>{{ player_name }}</h3>                    
+    </div>
+    <div class="col-md-12">        
+        <img src="{{ player_avatar }}">                    
+    </div>
+    <div class="col-md-5">        
+        <p>recent {{ match_number }} match up history</p>                    
+    </div>
+</div>
+<div class="row search-history">
+    <div class="row search-history-title">
+        <div class="col-md-5">        
+            <h3>Radiant</h3>                    
+        </div>
+        <div class="col-md-2">        
+            <h3>Winner</h3>                    
+        </div>
+        <div class="col-md-5">        
+            <h3>Dire</h3>                    
+        </div>
+    </div> 
+</div>
+{% for match in match_detail_list %}
+<div class="row search-history">
+    <div class="row search-history-content">
+        <div class="col-md-5">        
+            {% for hero in match.radiant_hero %}
+                <img src="/static/img/potrait/{{ hero }}.png">
+            {% endfor %}                    
+        </div>
+        <div class="col-md-2"> 
+            {% if match.winner == "Radiant" %}       
+            <p class="winner-p radiant-win">{{ match.winner }}</p>   
+            {% else %}
+            <p class="winner-p dire-win">{{ match.winner }}</p> 
+            {% endif %}                 
+        </div>
+        <div class="col-md-5">        
+            {% for hero in match.dire_hero %}
+                <img src="/static/img/potrait/{{ hero }}.png">
+            {% endfor %}                  
+        </div>
+    </div> 
+</div>
+{% endfor %}
+{% endif %}
 {% endblock %}
 
+{% block CSS %}
+.search-input
+{
+    text-align:center;
+}
+.search-result
+{
+    text-align:center;
+}
+.search-history
+{
+    text-align:center;    
+}
+.search-history-content{
+    padding:2px;
+}
+.winner-p
+{
+    font-weight:bold;
+    font-size:x-large;
+}
+.radiant-win{
+    text-align:left;
+}
+.dire-win{
+    text-align:right;
+}
+{% endblock %}

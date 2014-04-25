@@ -27,6 +27,9 @@ def banpick(request):
 			ban_or_pick = 'ban'
 			banpick_phase = banpick_phase+1
 			option_list = generate_option_list(radiant_pick, radiant_ban, dire_pick, dire_ban)
+			strength_list = option_list[0]
+			agility_list = option_list[1]
+			intell_list = option_list[2]
 		else:
 			banpick_phase = int(request.GET['phase'])
 			banpick_side = str(request.GET['side'])
@@ -41,6 +44,9 @@ def banpick(request):
 				if banpick_side == 'dire' and banpick_phase in pick_phase:					
 					dire_pick = dire_pick + str(hero_id) + ' '
 				option_list = generate_option_list(radiant_pick, radiant_ban, dire_pick, dire_ban)
+				strength_list = option_list[0]
+				agility_list = option_list[1]
+				intell_list = option_list[2]
 				if banpick_phase in change_side:
 					if banpick_side == 'radiant':
 						banpick_side = 'dire'
