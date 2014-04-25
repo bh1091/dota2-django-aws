@@ -1,8 +1,7 @@
-<html>
-<head>
-    <title>Search</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Search Page{% endblock %}
+
+{% block content %}
     <form action="/search/" method="get">
         <input type="text" name="steam_id">
         <input type="submit" value="Search">
@@ -13,11 +12,11 @@
     <p>recent {{ match_number }} match ids</p>
     <ul>
     {% for match in match_list_10 %}
-    	<li>{{ match.match_id }}</li>
+        <li>{{ match.match_id }}</li>
     {% endfor %}
-	</ul>
+    </ul>
     {% else %}
     <p>please enter your steam ID </p>
     {% endif %}
-</body>
-</html>
+{% endblock %}
+

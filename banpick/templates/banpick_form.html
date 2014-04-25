@@ -1,0 +1,87 @@
+<form id="bpform" action="/banpick/" method="get">
+	<input type="hidden" name="phase" value="{{ banpick_phase }}" readonly>
+	<input type="hidden" name="radiant_ban" value="{{ radiant_ban }}" readonly>
+	<input type="hidden" name="radiant_pick" value="{{ radiant_pick }}" readonly>
+	<input type="hidden" name="dire_ban" value="{{ dire_ban }}" readonly>
+	<input type="hidden" name="dire_pick" value="{{ dire_pick }}" readonly>
+	<input type="hidden" name="side" value="{{ banpick_side }}" readonly>
+	{% if banpick_phase == 0 %}
+	<div class="row choose-side-row">
+		<div class="col-md-6 side-radio">
+			<div class="row">
+				<h3>Radiant</h3>
+			</div>
+			<div class="row">
+				<input type="radio" name="choose_side" value="radiant"><br>
+			</div>			
+		</div>
+		<div class="col-md-6 side-radio">
+			<div class="row">
+				<h3>Dire</h3>
+			</div>
+			<div class="row">
+			</div>
+			<input type="radio" name="choose_side" value="dire"><br>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="col-md-12 submit-col">
+			<input class="btn btn-default" type="submit" value="Submit">
+		</div>
+	</div>	
+	{% elif banpick_phase == 21 %}
+	<div class="row result-row">
+		<div class="col-md-12">
+			<h3>Ban Pick Finished</h3>
+		</div>
+	</div>
+	<div class="row result-row">
+		<div class="col-md-6">
+			<h3>Radiant Winrate = {{ radiant_winrate|stringformat:".3f" }}</h3>
+		</div>
+		<div class="col-md-6">
+			<h3>Dire Winrate = {{ dire_winrate|stringformat:".3f" }}</h3>
+		</div>
+	</div>	
+	{% else %}
+	<div class="row turn-row">
+		<div class="col-md-12">
+			<h3 class="turn-h3">
+					{% if banpick_side == "radiant" %}
+					Radiant's turn to
+					{% elif banpick_side == "dire" %}
+					Dire's turn to
+					{% endif %}
+					{% if ban_or_pick == "ban" %}
+					  ban
+					{% elif ban_or_pick == "pick" %}
+					  pick
+					{% endif %}
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<select name="hero_id"class="image-picker" form="bpform">
+		{% for opt in option_list %}
+			<option data-img-src="/static/img/potrait/{{ opt }}.png" value="{{ opt }}">{{ opt }}</option>
+		{% endfor %}
+		</select>
+	</div>
+	<div class="row turn-row">
+		<div class="col-md-12">
+			<h4>Please choose hero</h4>
+		</div>
+	</div>
+	<!-- <div class="row turn-row">
+		<div class="col-md-12">
+			<input type="text" name="hero_id">
+		</div>		
+	</div>	 -->
+	<div class="row">
+		<div class="col-md-12 submit-col">
+			<input class="btn btn-default" type="submit" value="Submit">
+		</div>
+	</div>
+	{% endif %}
+		
+</form>

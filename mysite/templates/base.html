@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+{% load staticfiles %}
+<head>
+	<!-- Bootstrap -->
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "image-picker/image-picker.css" %}" rel="stylesheet">
+    <title>
+    	{% block title %}
+    	{% endblock %}
+    </title>
+    <style>
+    	{% include "includes/css/nav_css.html" %}
+    	{% block CSS %}
+    	{% endblock %}
+    	.thumbnail{
+    		margin-bottom: 0px;
+    	}
+    	ul.thumbnails.image_picker_selector li{
+    		margin: 1px;
+    	}    
+    	ul.thumbnails.image_picker_selector li .thumbnail{
+    		padding: 4px;
+    		border: 0;
+    	}	
+    </style>
+</head>
+<body>
+	{% include "includes/nav.html" %}
+	<div class="container">
+    {% block content %}
+    {% endblock %}
+    {% block footer %}    
+    {% endblock %}
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "image-picker/image-picker.min.js" %}"></script>
+    {% block javascript %}
+    {% endblock %}
+</body>
+</html>
