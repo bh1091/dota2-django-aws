@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'search',
     'banpick',
     'mysite',
+    'news',
 )
 
 MIDDLEWARE_CLASSES = (

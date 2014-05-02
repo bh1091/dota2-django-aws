@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}News Page{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		{% for news in all_page_news %}
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a href="{{ news.link }}"><h2 class="panel-title news-title">{{ news.title }}</h2></a>
+				<p>{{ news.post_date }}</p>				
+			</div>			
+			<div class="panel-body">
+				<div class="row">
+					{% if news.is_match %}
+						<div class="col-md-5">
+							{% for hero in news.radiant_hero %}
+							<img src="/static/img/potrait/{{ hero }}.png">
+							{% endfor %}
+						</div>
+						<div class="col-md-1">
+							{% if news.winner == 1 %}
+							<p class="winner-p">></p>
+							{% else %}
+							<p class="winner-p"><</p>
+							{% endif %}
+						</div>
+						<div class="col-md-5">
+							{% for hero in news.dire_hero %}
+							<img src="/static/img/potrait/{{ hero }}.png">
+							{% endfor %}
+						</div>						
+					{% endif %}	
+					<div class="col-md-12">
+						<p>{{ news.content }}</p>
+					</div>
+					<div class="col-md-12">
+						<p>from : {{ news.source }}</p>
+					</div>				
+				</div>				
+			</div>					
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% endblock %}
+
+{% block CSS %}
+.news-title
+{
+	font-size:24px;
+	font-weight:bold;
+}
+.winner-p
+{
+    font-weight:bold;
+    font-size:x-large;
+}
+{% endblock %}
