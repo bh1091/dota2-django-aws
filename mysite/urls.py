@@ -12,4 +12,6 @@ urlpatterns = patterns('',
     url(r'^search/$', 'search.views.search'),
     url(r'^banpick/$', 'banpick.views.banpick'),
     url(r'^news/$', 'news.views.news'),
+    url(r'^live/$','live.views.present_live'),
+    url(r'^live/(.+)/$','live.views.watch'),
 )
