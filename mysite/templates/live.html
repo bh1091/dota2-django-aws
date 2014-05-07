@@ -9,8 +9,7 @@
 
 <div class="container">
 
-      
-      <hr>
+   
 
       <div class="jumbotron">
         <h1>Live Streaming</h1>
@@ -21,8 +20,8 @@
 
       <div class="row-fluid">
       	{% for liveinfo in lives %}
-		<div class="span6">
-
+		<div class="col-md-6">
+			
   		
       	<a href= "/live/{{ liveinfo.name}}/" class="thumbnail" ><img src={{ liveinfo.pic }}  /></a>
       	<h3>{{ liveinfo.display }}</h3> <p>viewers: {{ liveinfo.viewers }}</p>
