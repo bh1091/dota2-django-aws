@@ -3,10 +3,32 @@
 {% block title %}Home Page{% endblock %}
 
 {% block CSS %}
-
+.homepage-left{
+	text-align:center;
+}
 {% endblock %}
 
 {% block content %}
-<p>Dota II Ban Pick</p>
+<div class="row">
+	<div class="col-md-6 homepage-left">
+		<img src="/static/img/logo.png">
+		<h1 class="banpick_header">Simulating draft !</h1>
+		<h1 class="banpick_header">Follow latest news !</h1>
+		<h1 class="banpick_header">See Who's streaming !</h1>		
+	</div>
+	<div class="col-md-6 homepage-right">
+		<div class="row">
+			<h1 class="banpick_header">Dota II Ban Pick Analyser</h1>
+		</div>
+		<div class="row">
+			<p>Tons of high level match history as training data !</p>
+			<p>Amazing algorithm with about 80% accuracy !</p>
+			<p>Help you to improve your drafting skill and evaluate line up !</p>
+		</div>
+		<div class="row">
+			<a href="/banpick/"><button type="button" class="btn btn-default">Try It Now</button></a>
+		</div>		
+	</div>
+</div>
 {% endblock %}
 </html>
