@@ -1,0 +1,44 @@
+<html>
+{% extends "base.html" %}
+{% block title %}Live streaming{% endblock %}
+
+{% block CSS %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+      
+      <hr>
+
+      <div class="jumbotron">
+        <h1>Live Streaming</h1>
+        
+      </div>
+
+      <hr>
+
+      <div class="row-fluid">
+      	{% for liveinfo in lives %}
+		<div class="span6">
+
+  		
+      	<a href= "/live/{{ liveinfo.name}}/" class="thumbnail" ><img src={{ liveinfo.pic }}  /></a>
+      	<h3>{{ liveinfo.display }}</h3> <p>viewers: {{ liveinfo.viewers }}</p>
+
+
+  		
+		</div>
+		{% endfor %}
+    </div>
+
+ 
+      <hr>
+
+
+    </div> <!-- /container -->
+
+
+{% endblock %}
+</html>
