@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'mysite',
     'news',
     'live',
+    'rank',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Rank Page{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1 class="rank_header">Hero Appearence Ranking</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 rank-area">
+		{% for hero in hero_list%}
+		<div class="row">
+			<div class="col-md-1">
+				<!-- advertise area -->
+			</div>
+			<div class="col-md-2">
+				<div class="row">
+					<div class="col-md-4">
+						<p class="apr-rank">{{forloop.counter}}</p>
+					</div>
+					<div class="col-md-8">
+						<img class="rank-portrait" src="/static/img/potrait/{{ hero.0 }}.png">
+					</div>				
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="progress">
+				  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{ hero.1 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ hero.1 }}%">				    
+				  </div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<p class="apr-rate">{{ hero.1 }}%</p>
+			</div>
+			<div class="col-md-1">
+				<!-- advertise area -->
+			</div>			
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+
+{% endblock %}
+
+{% block CSS %}
+.rank_header
+{
+	text-align:center;
+	font-family:Audiowide;
+	margin-bottom:20px;
+}
+.rank-area
+{
+	text-align:center;
+}
+.apr-rate
+{
+	font-family:Audiowide;
+}
+.apr-rank
+{
+	font-family:Audiowide;
+	margin: 0px;
+	font-size: 25px;
+}
+.progress
+{
+	height:33px;
+}
+{% endblock %}

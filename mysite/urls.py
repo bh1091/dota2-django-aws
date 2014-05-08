@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     url(r'^news/$', 'news.views.news'),
     url(r'^live/$','live.views.present_live'),
     url(r'^live/(.+)/$','live.views.watch'),
+    url(r'^rank/$','rank.views.rank'),
 )
