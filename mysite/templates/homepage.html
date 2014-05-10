@@ -12,6 +12,10 @@
 	text-align:center;
 	font-family:Audiowide;
 }
+.homepage-right-row
+{
+	margin-top: 60px;
+}
 {% endblock %}
 
 {% block content %}
@@ -23,7 +27,7 @@
 		<h1 >See Who's streaming !</h1>		
 	</div>
 	<div class="col-md-6 homepage-right">
-		<div class="row">
+		<div class="row homepage-right-row">
 			<h1 class="bp_header">Dota II Ban Pick Analyser</h1>
 		</div>
 		<div class="row">
@@ -33,7 +37,17 @@
 		</div>
 		<div class="row">
 			<a href="/banpick/"><button type="button" class="btn btn-default">Try It Now</button></a>
-		</div>		
+		</div>	
+		<div class="row homepage-right-row">
+			<h1 class="bp_header">Hot Dota2 Streaming</h1>
+		</div>
+		<div class="row">
+			<p>Watch famous player streaming !</p>
+			<p>Watch professional games with caster !</p>			
+		</div>
+		<div class="row">
+			<a href="/live/"><button type="button" class="btn btn-default">Watch Now</button></a>
+		</div>	
 	</div>
 </div>
 {% endblock %}
