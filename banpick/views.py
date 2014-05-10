@@ -62,9 +62,9 @@ def banpick(request):
 				else:
 					ban_or_pick = 'pick'
 				if banpick_phase == 21:
-					win_rate = analysis_winrate(radiant_ban, radiant_pick, dire_ban, dire_pick)
+					win_rate = analysis_winrate(radiant_pick, dire_pick)
 					radiant_winrate = win_rate
-					dire_winrate = 1.0 - radiant_winrate
+					dire_winrate = 100.0 - radiant_winrate
 	
 
 	return render_to_response('banpick.html', locals())
